@@ -15,13 +15,22 @@
         <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
         {% endif %}
 
-        {{ css() }}
+        <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+
+        {% for cssfile in css_files %}
+        <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+        {% endfor %}
+
+        {% for cssfile in extra_css_files %}
+        <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+        {% endfor %}
     </head>
     <body>
         <header class="site-header">
             <div class="wrapper">
-                <h1><a class="site-title" href="/Docs/">Histacom</a></h1>
+                <h1><a class="site-title" href="{{ pathto(master_doc) }}">{{ project }}</a></h1>
                 <p>The documentation</p>
+                <a class="page-link" href="/">Home</a>
                 <nav class="site-nav">
                     {%- for rellink in rellinks %}
                     <a class="page-link" href="{{ pathto(rellink[0]) }}">{{ rellink[3] }}</a>
