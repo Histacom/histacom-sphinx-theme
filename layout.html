@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        {% block htmltitle %}
+        <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+        {% endblock %}
+
+        {# FAVICON #}
+        {% if favicon %}
+        <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+        {% endif %}
+
+        {# CSS #}
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="wrapper">
+                <h1><a class="site-title" href="/Docs/">Histacom</a></h1>
+                <p>The documentation</p>
+                <nav class="site-nav">
+                    {%- for rellink in rellinks %}
+                    <a class="page-link" href="{{ pathto(rellink[0]) }}">{{ rellink[3] }}</a>
+                    {%- endfor %}
+                </nav>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="wrapper">
+                <div class="home">
+                    <section class="post-list">
+                        <div class="post">
+                            <div class="wrapper">
+                                <h1>{{ title }}</h1>
+                                {% block body %}{% endblock %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="post">
+                    <div class="wrapper">
+                        <footer class="site-footer">
+                            <p>&copy; Histacom Development Team</p>
+                            <h3><p>Web design by <a href="https://github.com/phillips1012">phillips1012</a>, <a href="https://github.com/UberGM/">UberGM</a>, and <a href="https://github.com/pfgithub">pfg</a></p></h3>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
