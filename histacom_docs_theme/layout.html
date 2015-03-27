@@ -32,9 +32,7 @@
                 <p>The documentation</p>
                 <a class="page-link" href="/">Home</a>
                 <nav class="site-nav">
-                    {%- for rellink in rellinks %}
-                    <a class="page-link" href="{{ pathto(rellink[0]) }}">{{ rellink[3] }}</a>
-                    {%- endfor %}
+                    {{ toctree(maxdepth=4, collapse=False, includehidden=True) }}
                 </nav>
             </div>
         </header>
