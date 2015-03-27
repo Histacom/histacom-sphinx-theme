@@ -34,7 +34,6 @@
                 <nav class="site-nav">
                     {%- for rellink in rellinks %}
                     <a class="page-link" href="{{ pathto(rellink[0]) }}">{{ rellink[3] }}</a>
-                    {%- if not loop.first %}{{ reldelim2 }}{% endif %}
                     {%- endfor %}
                 </nav>
             </div>
@@ -52,6 +51,7 @@
                     </section>
                 </div>
 
+				{%- block footer %}
                 <div class="post">
                     <div class="wrapper">
                         <footer class="site-footer">
@@ -60,6 +60,7 @@
                         </footer>
                     </div>
                 </div>
+                {%- endblock %}
             </div>
         </div>
     </body>
